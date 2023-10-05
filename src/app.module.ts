@@ -2,12 +2,9 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { StudentModule } from './student/student.module';
 
+const MONGODB_URL = process.env.DB_URI;
+
 @Module({
-  imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://keerthikmca05:tlUvJusNNpeNumLK@cluster0.ighxidg.mongodb.net/pma?retryWrites=true&w=majority',
-    ),
-    StudentModule,
-  ],
+  imports: [MongooseModule.forRoot(MONGODB_URL), StudentModule],
 })
 export class AppModule {}
